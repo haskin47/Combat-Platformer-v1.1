@@ -24,7 +24,7 @@ public class PauseMenu : MonoBehaviour
         EndRunButton.onClick.AddListener(ToMenu);
 
         if (Input.GetKeyDown(KeyCode.Escape))
-        { 
+        {
             
             if (isPaused)
             {
