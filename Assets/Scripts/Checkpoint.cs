@@ -24,11 +24,11 @@ public class Checkpoint : MonoBehaviour
         collision.gameObject.transform.position = startPosition;
 
 
-        if (collision.gameObject.tag == "Player")
+        /*if (collision.gameObject.tag == "Player")
         {
             
 
-        }
+        }*/
     }
 
 }

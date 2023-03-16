@@ -5,7 +5,7 @@ public class HeroKnight : MonoBehaviour {
 
     [SerializeField] float      m_speed = 4.0f;
     [SerializeField] float      m_jumpForce = 7.5f;
-    [SerializeField] float      m_rollForce = 6.0f;
+    //[SerializeField] float      m_rollForce = 6.0f;
     [SerializeField] bool       m_noBlood = false;
     [SerializeField] GameObject m_slideDust;
 
@@ -16,15 +16,15 @@ public class HeroKnight : MonoBehaviour {
     private Sensor_HeroKnight   m_wallSensorR2;
     private Sensor_HeroKnight   m_wallSensorL1;
     private Sensor_HeroKnight   m_wallSensorL2;
-    private bool                m_isWallSliding = false;
+    //private bool                m_isWallSliding = false;
     private bool                m_grounded = false;
     private bool                m_rolling = false;
     private int                 m_facingDirection = 1;
-    private int                 m_currentAttack = 0;
-    private float               m_timeSinceAttack = 0.0f;
+    //private int                 m_currentAttack = 0;
+    //private float               m_timeSinceAttack = 0.0f;
     private float               m_delayToIdle = 0.0f;
-    private float               m_rollDuration = 8.0f / 14.0f;
-    private float               m_rollCurrentTime;
+    //private float               m_rollDuration = 8.0f / 14.0f;
+    //private float               m_rollCurrentTime;
 
 
     // Use this for initialization
@@ -43,15 +43,15 @@ public class HeroKnight : MonoBehaviour {
     void Update ()
     {
         // Increase timer that controls attack combo
-        m_timeSinceAttack += Time.deltaTime;
+        /*m_timeSinceAttack += Time.deltaTime;*/
 
         // Increase timer that checks roll duration
-        if(m_rolling)
-            m_rollCurrentTime += Time.deltaTime;
+        /*if(m_rolling)
+            m_rollCurrentTime += Time.deltaTime;*/
 
         // Disable rolling if timer extends duration
-        if(m_rollCurrentTime > m_rollDuration)
-            m_rolling = false;
+        /*if(m_rollCurrentTime > m_rollDuration)
+            m_rolling = false;*/
 
         //Check if character just landed on the ground
         if (!m_grounded && m_groundSensor.State())
@@ -103,11 +103,11 @@ public class HeroKnight : MonoBehaviour {
         }
             
         //Hurt
-        else if (Input.GetKeyDown("q") && !m_rolling)
-            m_animator.SetTrigger("Hurt");
+        /*else if (Input.GetKeyDown("q") && !m_rolling)
+            m_animator.SetTrigger("Hurt");*/
 
         //Attack
-        else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
+        /*else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
         {
             m_currentAttack++;
 
@@ -124,10 +124,10 @@ public class HeroKnight : MonoBehaviour {
 
             // Reset timer
             m_timeSinceAttack = 0.0f;
-        }
+        }*/
 
         // Block
-        else if (Input.GetMouseButtonDown(1) && !m_rolling)
+        /*else if (Input.GetMouseButtonDown(1) && !m_rolling)
         {
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
@@ -135,14 +135,14 @@ public class HeroKnight : MonoBehaviour {
 
         else if (Input.GetMouseButtonUp(1))
             m_animator.SetBool("IdleBlock", false);
-
+        */
         // Roll
-        else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding)
+        /*else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding)
         {
             m_rolling = true;
             m_animator.SetTrigger("Roll");
             m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
-        }
+        }*/
             
 
         //Jump
@@ -194,6 +194,7 @@ public class HeroKnight : MonoBehaviour {
     }
 
 
+    //  Unused
     void MovementAnimation() 
     {
         
