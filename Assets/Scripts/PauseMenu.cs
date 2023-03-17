@@ -3,26 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
-
     public Button ContinueButton;
     public Button EndRunButton;
 
-    public static bool isPaused;
+    public GameObject deadMenu;
+    public Button mainMenuButton;
 
+    public GameObject victoryMenu;
+
+
+    public static bool isPaused;
+    //public bool isDead;
+
+    private static bool isDead = false;
+    [SerializeField] private Animator animator;
 
     void Start()
     {
         pauseMenu.SetActive(false);
+        deadMenu.SetActive(false);  
+        victoryMenu.SetActive(false);
+
     }
     void Update()
     {
         ContinueButton.onClick.AddListener(ResumeGame);
         EndRunButton.onClick.AddListener(ToMenu);
 
+        
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             
@@ -36,6 +50,7 @@ public class PauseMenu : MonoBehaviour
             }
 
         }
+
     }
 
     public void PauseGame()

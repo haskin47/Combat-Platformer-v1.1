@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Collectable
+  - Checkpoint
+  - Trap
+  - Terrain
   layers:
   - Default
   - TransparentFX
