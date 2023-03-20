@@ -11,10 +11,12 @@ public class TimerTest : MonoBehaviour
     
     [SerializeField] Text timer;
 
+    [SerializeField] private GameObject timerGameObject;
+
     private void Start()
     {
         timer.text = timeremaining.ToString();
-        
+        timerGameObject.SetActive(false);
     }
 
     private void Update()
@@ -33,8 +35,9 @@ public class TimerTest : MonoBehaviour
             if (timeremaining <= 0)
             {
                 //  display message
-                //Debug.Log("Game should pause now");
+                Debug.Log("TIMES UP");
                 isRunning = false;
+                timerGameObject.SetActive(true);
             }
         }
 

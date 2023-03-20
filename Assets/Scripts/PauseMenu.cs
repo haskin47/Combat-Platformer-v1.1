@@ -12,16 +12,17 @@ public class PauseMenu : MonoBehaviour
     public Button EndRunButton;
 
     public GameObject deadMenu;
-    public Button mainMenuButton;
+    public Button deadMenuButton;
+    [SerializeField] public GameObject IsDeadTrigger;
 
     public GameObject victoryMenu;
-
+    public Button victoryMenuButton;
+    [SerializeField] public GameObject VictoryTrigger;
 
     public static bool isPaused;
     //public bool isDead;
 
     private static bool isDead = false;
-    [SerializeField] private Animator animator;
 
     void Start()
     {
@@ -29,13 +30,27 @@ public class PauseMenu : MonoBehaviour
         deadMenu.SetActive(false);  
         victoryMenu.SetActive(false);
 
-    }
-    void Update()
-    {
+        //  Pause Menu
         ContinueButton.onClick.AddListener(ResumeGame);
         EndRunButton.onClick.AddListener(ToMenu);
 
-        
+        //  Dead Menu
+        deadMenuButton.onClick.AddListener(ToMenu);
+
+        //  Victory Menu
+        victoryMenuButton.onClick.AddListener(ToMenu);
+    }
+    void Update()
+    {
+        ////  Pause Menu
+        //ContinueButton.onClick.AddListener(ResumeGame);
+        //EndRunButton.onClick.AddListener(ToMenu);
+
+        ////  Dead Menu
+        //deadMenuButton.onClick.AddListener(ToMenu);
+
+        ////  Victory Menu
+        //victoryMenuButton.onClick.AddListener(ToMenu);
         
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -50,7 +65,22 @@ public class PauseMenu : MonoBehaviour
             }
 
         }
+        
+        if (IsDeadTrigger.activeSelf) 
+        {
+            //Debug.Log("Game should pause now 2");
+            deadMenu.SetActive(true);
+            Time.timeScale = 0f;
+            isPaused = true;
+        }
 
+        if (VictoryTrigger.activeSelf)
+        {
+            Debug.Log("TIMES UP TWO");
+            victoryMenu.SetActive(true);
+            Time.timeScale = 0f;
+            isPaused= true;
+        }
     }
 
     public void PauseGame()
@@ -68,11 +98,12 @@ public class PauseMenu : MonoBehaviour
     }
     public void ToMenu()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        Debug.Log("Quiting...");
+        //Debug.Log(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         //  crashe3d game, lol
         //  something in the interrum
 
-        Debug.Log("Quit");
-        Application.Quit();
+        //Application.Quit();
     }
 }

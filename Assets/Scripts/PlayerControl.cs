@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour {
     [SerializeField] float      movespeed = 4.0f;
     [SerializeField] float      jumpforce = 7.5f;
     [SerializeField] bool       m_noBlood = false;
-    //[SerializeField] GameObject m_slideDust;
+    [SerializeField] GameObject IsDeadTrigger;
 
     private Animator            animator;
     private Rigidbody2D         rigidbody;
@@ -20,9 +20,9 @@ public class PlayerControl : MonoBehaviour {
     private float               dirx = 0f;
 
     private float               m_delayToIdle = 0.0f;
-    public bool                isDead;
+    private bool                isDead;
 
-
+    private float deathTimer = 1.5f;
     
     private enum MovementState { idle, running, jumping, falling}   //  0, 1, 2, 3
     //MovementState state = MovementState.idle;
@@ -35,6 +35,7 @@ public class PlayerControl : MonoBehaviour {
         rigidbody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
 
+        IsDeadTrigger.SetActive(false);
     }
 
     // Update is called once per frame
@@ -134,6 +135,10 @@ public class PlayerControl : MonoBehaviour {
 
             UpdateAnimationState(); //  18:39
         }
+        else
+        {
+            DeathTimer();
+        }
         
     }
 
@@ -182,9 +187,24 @@ public class PlayerControl : MonoBehaviour {
 
             animator.SetBool("noBlood", m_noBlood);
             animator.SetTrigger("Death");
-
         }
     }
 
+    private void DeathTimer()
+    {
+        if (deathTimer > 0)
+        {
+            deathTimer -= Time.deltaTime;
+        }
+
+        else if (deathTimer <= 0)
+        {
+                //  display message
+            Debug.Log("Game should pause now");
+            IsDeadTrigger.SetActive(true);
+
+        }
+
+    }
     //  Maybe set a timer, after a few seconds dead, trigger page?
 }

@@ -25,6 +25,7 @@ public class Collector : MonoBehaviour
             collision.gameObject.SetActive(false);
             listofcoins.Add(collision.gameObject);
             itemText.text = "Gold Collected: " + items;
+            Debug.Log("Gold Collected: " + items);
         }
 
         //  Reset the Coins
