@@ -42,16 +42,7 @@ public class PauseMenu : MonoBehaviour
     }
     void Update()
     {
-        ////  Pause Menu
-        //ContinueButton.onClick.AddListener(ResumeGame);
-        //EndRunButton.onClick.AddListener(ToMenu);
-
-        ////  Dead Menu
-        //deadMenuButton.onClick.AddListener(ToMenu);
-
-        ////  Victory Menu
-        //victoryMenuButton.onClick.AddListener(ToMenu);
-        
+       
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             
