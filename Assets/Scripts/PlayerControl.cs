@@ -22,6 +22,8 @@ public class PlayerControl : MonoBehaviour {
     private float               m_delayToIdle = 0.0f;
     private bool                isDead;
 
+    private int numberofjumps = 0;
+
     private float deathTimer = 1.5f;
     
     private enum MovementState { idle, running, jumping, falling}   //  0, 1, 2, 3
@@ -128,9 +130,10 @@ public class PlayerControl : MonoBehaviour {
             dirx = Input.GetAxisRaw("Horizontal");
             rigidbody.velocity = new Vector2(dirx * movespeed, rigidbody.velocity.y);
 
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump") && numberofjumps < 2)
             {
                 rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpforce);
+                numberofjumps++;
             }
 
             UpdateAnimationState(); //  18:39
@@ -159,13 +162,14 @@ public class PlayerControl : MonoBehaviour {
         else
         {
             state = MovementState.idle;
+            numberofjumps = 0;
         }
         
         if(rigidbody.velocity.y > 0.1f)
         {
             state = MovementState.jumping;
         }
-        else if(rigidbody.velocity.y < -0.1f)
+        else if(rigidbody.velocity.y < -0.001f)
         {
             state = MovementState.falling;
         }

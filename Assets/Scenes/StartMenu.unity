@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &53298939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1280,9 +1280,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'How to Play
+  m_text: 'The worst thing possible has occured: a cursed Rust Monster has eaten
+    your sword! Now, you''ll need to earn enough gold for a new one!
 
-'
+    Run the
+    Dungeon, using SPACEBAR to jump and the A and D keys to move left and right,
+    respectively.
+
+    Collect as much gold as you can in two minutes.
+
+    Oh, and
+    try not to die?
+
+    Ressurections are so expensive these days.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1345,7 +1355,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -91.49161, y: 0, z: -801.64087, w: -295.16937}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1789,7 +1799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1876531065
 RectTransform:
   m_ObjectHideFlags: 0
